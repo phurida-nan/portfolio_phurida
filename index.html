@@ -1,1 +1,525 @@
-<h1>My Portfolio</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phurida Nanthaphakphong — Biomedical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a2240;
+    --blue: #1565c0;
+    --blue-mid: #1976d2;
+    --blue-light: #42a5f5;
+    --sky: #e3f2fd;
+    --sky-deep: #bbdefb;
+    --white: #ffffff;
+    --off-white: #f5f9ff;
+    --gray-100: #f0f4f8;
+    --gray-200: #dce6f0;
+    --gray-400: #90a4b8;
+    --gray-600: #5a7184;
+    --gray-800: #2d3f50;
+    --gold: #f59e0b;
+    --silver: #94a3b8;
+    --green: #16a34a;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 16px rgba(21,101,192,0.08);
+    --shadow-hover: 0 8px 32px rgba(21,101,192,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--gray-800);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .hero {
+    padding-top: 60px;
+    background: linear-gradient(135deg, #0a2240 0%, #1565c0 60%, #1976d2 100%);
+    color: white; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto;
+    padding: 4rem 2rem 3.5rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px; padding: 5px 14px;
+    font-size: 12px; font-weight: 500; letter-spacing: .04em;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 600; line-height: 1.15;
+    margin-bottom: .75rem;
+  }
+  .hero h1 em { font-style: italic; color: #bbdefb; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.7; max-width: 500px; margin-bottom: 2rem; }
+  .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .stat-num { font-size: 1.75rem; font-weight: 700; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: .06em; }
+  .hero-photo {
+    width: 200px; height: 200px; border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.3);
+    object-fit: cover; display: block;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3); flex-shrink: 0;
+  }
+  .contact-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 30px; padding: 6px 14px; font-size: 12.5px; color: rgba(255,255,255,0.85);
+    text-decoration: none; transition: background .2s;
+  }
+  .chip:hover { background: rgba(255,255,255,0.18); }
+  section { padding: 5rem 2rem; }
+  section:nth-child(even) { background: var(--white); }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--blue); margin-bottom: .5rem; }
+  .section-title { font-family: 'Lora', serif; font-size: 1.9rem; font-weight: 600; color: var(--navy); line-height: 1.2; }
+  .section-line { width: 40px; height: 3px; background: var(--blue-light); border-radius: 2px; margin-top: .75rem; margin-bottom: 2.5rem; }
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: start; }
+  .about-text p { color: var(--gray-600); line-height: 1.8; margin-bottom: 1rem; }
+  .skills-block h4 { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: .75rem; margin-top: 1.25rem; }
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: .5rem; }
+  .skill-tag { font-size: 12.5px; padding: 5px 13px; border-radius: 30px; background: var(--sky); color: var(--blue); border: 1px solid var(--sky-deep); font-weight: 500; }
+  .skill-tag.dark { background: var(--navy); color: white; border-color: transparent; }
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .proj-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--gray-200); padding: 1.5rem;
+    transition: transform .2s, box-shadow .2s; position: relative; overflow: hidden;
+  }
+  .proj-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+  .proj-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+  .proj-type { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: .9rem; }
+  .type-hw { background: #e3f2fd; color: #1565c0; }
+  .type-sw { background: #e8f5e9; color: #2e7d32; }
+  .type-ai { background: #f3e5f5; color: #6a1b9a; }
+  .proj-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: .5rem; line-height: 1.4; }
+  .proj-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+  .proj-img { width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 1rem; }
+  .proj-img-ph { width: 100%; height: 160px; border-radius: var(--radius-sm); background: var(--sky); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--blue); font-size: 12px; margin-bottom: 1rem; border: 1.5px dashed var(--sky-deep); }
+  .timeline-wrap { position: relative; padding-left: 2rem; }
+  .timeline-wrap::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 0; width: 2px; background: var(--gray-200); border-radius: 2px; }
+  .tl-group { margin-bottom: 2.5rem; }
+  .tl-year { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; position: relative; }
+  .tl-year::before { content: ''; position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; border-radius: 50%; background: var(--blue); border: 3px solid white; box-shadow: 0 0 0 2px var(--blue); }
+  .tl-items { display: flex; flex-direction: column; gap: 12px; }
+  .tl-card { background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--gray-200); padding: 1rem 1.25rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+  .tl-card-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+  .tl-card-sub { font-size: 12.5px; color: var(--gray-600); }
+  .tl-card-img { width: 90px; height: 68px; object-fit: cover; border-radius: var(--radius-sm); flex-shrink: 0; }
+  .tl-card-img-ph { width: 90px; height: 68px; border-radius: var(--radius-sm); background: var(--sky); border: 1px dashed var(--sky-deep); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 9px; color: var(--blue); text-align: center; padding: 4px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .badge-award { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+  .badge-gold { background: #fef3c7; color: #92400e; }
+  .badge-silver { background: #f1f5f9; color: #475569; }
+  .badge-fund { background: #dcfce7; color: #15803d; }
+  .badge-pass { background: #dbeafe; color: #1d4ed8; }
+  .badge-scholar { background: #ede9fe; color: #6d28d9; }
+  .badge-service { background: #fff7ed; color: #c2410c; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .gallery-item { border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 4/3; position: relative; background: var(--sky); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; display: block; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,34,64,0.75)); color: white; font-size: 11.5px; padding: 1.5rem .75rem .6rem; font-weight: 500; }
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; padding: 2.5rem 2rem; font-size: 13px; }
+  footer a { color: #42a5f5; text-decoration: none; }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-photo { margin: 0 auto; }
+    .hero-stats { justify-content: center; }
+    .contact-chips { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .tl-card { grid-template-columns: 1fr; }
+    .tl-card-img, .tl-card-img-ph { width: 100%; height: 140px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Phurida<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="mailto:phurida@email.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🎓 4th Year · College of Biomedical Engineering · Rangsit University</div>
+      <h1>Phurida<br><em>Nanthaphakphong</em></h1>
+      <p class="hero-sub">Biomedical engineering student passionate about medical device innovation, photobiomodulation therapy, and healthcare systems — bridging hardware prototyping with clinical application.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Awards & Medals</div></div>
+        <div class="stat"><div class="stat-num">฿150K</div><div class="stat-label">Startup Funding</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Key Projects</div></div>
+        <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Hospital Services</div></div>
+      </div>
+      <div class="contact-chips">
+        <a class="chip" href="mailto:phurida@email.com">✉ phurida@email.com</a>
+        <a class="chip" href="https://github.com/phurida-nan" target="_blank">⌥ github.com/phurida-nan</a>
+        <a class="chip" href="#">📄 Download CV</a>
+      </div>
+    </div>
+    <img class="hero-photo" src="assets/images/profile.jpg" alt="Phurida Nanthaphakphong"
+      onerror="this.outerHTML='<div style=\'width:200px;height:200px;border-radius:50%;border:4px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,0.5);font-size:13px;flex-shrink:0\'><svg width=\'40\' height=\'40\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span>profile.jpg</span></div>'">
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-eyebrow">About Me</p>
+        <h2 class="section-title">Engineering solutions at the intersection of light, biology, and data</h2>
+        <div class="section-line"></div>
+        <div class="about-text">
+          <p>I am a 4th-year Biomedical Engineering student at Rangsit University's College of Biomedical Engineering, with a strong focus on medical device development, photobiomodulation (PBM) therapy, and biosignal analysis.</p>
+          <p>My experience spans from hardware prototyping and embedded systems to hospital-grade software development and clinical equipment calibration services — giving me a holistic perspective on healthcare technology.</p>
+          <p>I have competed and won in national innovation competitions and secured over ฿150,000 in startup funding, while also providing real-world academic calibration services to hospitals in the Bangkok metropolitan area.</p>
+        </div>
+      </div>
+      <div class="skills-block">
+        <h4>Hardware & Embedded</h4>
+        <div class="skills-wrap">
+          <span class="skill-tag">Arduino / ESP32</span>
+          <span class="skill-tag">PWM Control</span>
+          <span class="skill-tag">LED Driver Circuit</span>
+          <span class="skill-tag">Sensor Integration</span>
+          <span class="skill-tag">Medical Device Calibration</span>
+        </div>
+        <h4>Software & Biomedical</h4>
+        <div class="skills-wrap">
+          <span class="skill-tag">PHP / MySQL</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Bootstrap 5</span>
+          <span class="skill-tag">Signal Processing (HRV/ECG)</span>
+          <span class="skill-tag">IRB/ERB Proposal Writing</span>
+        </div>
+        <h4>Domain Expertise</h4>
+        <div class="skills-wrap">
+          <span class="skill-tag dark">Photobiomodulation</span>
+          <span class="skill-tag dark">Type 2 Diabetes Management</span>
+          <span class="skill-tag dark">Wound Care Devices</span>
+          <span class="skill-tag dark">Cardiac Risk Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background: var(--off-white);">
+  <div class="container">
+    <p class="section-eyebrow">Projects</p>
+    <h2 class="section-title">Key Innovations</h2>
+    <div class="section-line"></div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_pbm.jpg" alt="PBM Blood Glucose Device"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_pbm.jpg</div>'">
+        <span class="proj-type type-hw">⚡ Hardware · Wearable</span>
+        <p class="proj-title">Blood Glucose Reduction via Photobiomodulation</p>
+        <p class="proj-desc">Wearable 660 nm LED vest using PWM-controlled light therapy targeting subcutaneous blood vessels to modulate glucose levels non-invasively in Type 2 Diabetes patients. STL 2026 Demo Days qualifier.</p>
+      </div>
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_wound.jpg" alt="Wound Care Device"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_wound.jpg</div>'">
+        <span class="proj-type type-hw">⚡ Hardware · Therapeutic</span>
+        <p class="proj-title">Chronic Wound Care Control Device</p>
+        <p class="proj-desc">Therapeutic control system delivering optimized stimulation to alleviate chronic wounds. Awarded Gold Medal at I-New Gen 2024, Silver Medal at I-New Gen 2025, and ฿100,000 TED Fund grant.</p>
+      </div>
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_hrv.jpg" alt="HRV Stress Analysis"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_hrv.jpg</div>'">
+        <span class="proj-type type-ai">🧠 AI · Biosignal</span>
+        <p class="proj-title">HRV-Based Stress Analysis System</p>
+        <p class="proj-desc">Real-time physiological stress detection using heart rate variability (HRV) signal processing and machine learning classification from ECG/PPG sensor data.</p>
+      </div>
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_cardiac.jpg" alt="Cardiac Risk Prediction"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_cardiac.jpg</div>'">
+        <span class="proj-type type-ai">🧠 AI · Predictive</span>
+        <p class="proj-title">Cardiac Risk Prediction System</p>
+        <p class="proj-desc">Early-warning cardiovascular disease risk analysis platform combining physiological signal acquisition with predictive modeling and risk stratification dashboards.</p>
+      </div>
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_mems.jpg" alt="Medical Equipment Management System"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_mems.jpg</div>'">
+        <span class="proj-type type-sw">💻 Software · Hospital</span>
+        <p class="proj-title">Medical Equipment Management System (MEMS)</p>
+        <p class="proj-desc">Hospital-grade PHP/MySQL web application for equipment borrowing/return workflows, role-based access control, audit logs, and Bootstrap 5 responsive UI.</p>
+      </div>
+
+      <div class="proj-card">
+        <img class="proj-img" src="assets/images/project_inventory.jpg" alt="Medical Inventory System"
+          onerror="this.outerHTML='<div class=\'proj-img-ph\'>📁 project_inventory.jpg</div>'">
+        <span class="proj-type type-sw">💻 Software · Inventory</span>
+        <p class="proj-title">Medical Inventory & Calibration System</p>
+        <p class="proj-desc">Centralized equipment inventory and calibration management platform with Masterlist management, deployed in academic service missions at Pradhipat and Samkoke hospitals.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="container">
+    <p class="section-eyebrow">Awards & Activities</p>
+    <h2 class="section-title">Timeline of Achievements</h2>
+    <div class="section-line"></div>
+    <div class="timeline-wrap">
+
+      <div class="tl-group">
+        <div class="tl-year">April 2026</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">STL Boost Camp 2026 — 2nd Runner-Up</p>
+              <p class="tl-card-sub">Blood glucose reduction via photobiomodulation wearable device</p>
+              <div class="badges">
+                <span class="badge-award badge-fund">🥉 2nd Runner-Up</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_stlboost2026.jpg" alt="STL Boost Camp 2026"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_stlboost2026.jpg</div>'">
+          </div>
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Startup Thailand League 2026</p>
+              <p class="tl-card-sub">Blood glucose reduction via photobiomodulation — Demo Days qualified (Central & Eastern region)</p>
+              <div class="badges">
+                <span class="badge-award badge-pass">✅ Demo Days Qualified</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_stl2026.jpg" alt="STL 2026"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_stl2026.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">November 2025</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Medical Device Calibration Service — Samkoke Hospital</p>
+              <p class="tl-card-sub">Academic calibration service; served as primary Masterlist officer</p>
+              <div class="badges">
+                <span class="badge-award badge-service">🔧 Primary Masterlist Officer</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_calib_samkoke.jpg" alt="Samkoke Hospital"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_calib_samkoke.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">August 2025</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Medical Device Association Scholarship</p>
+              <p class="tl-card-sub">Selected at the 35th Medical Equipment Academic Conference</p>
+              <div class="badges">
+                <span class="badge-award badge-scholar">🎓 Scholarship Recipient</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_scholarship2025.jpg" alt="Scholarship 2025"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_scholarship2025.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">July 2025</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Medical Device Calibration Service — Pradhipat Hospital</p>
+              <p class="tl-card-sub">Provided academic calibration service for medical instruments</p>
+              <div class="badges">
+                <span class="badge-award badge-service">🔧 Calibration Service</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_calib_pradhipat.jpg" alt="Pradhipat Hospital"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_calib_pradhipat.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">April 2025</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">STL Boost Camp 2025</p>
+              <p class="tl-card-sub">Non-invasive blood albumin measurement device</p>
+              <div class="badges"><span class="badge-award badge-pass">✅ Participated</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_stlboost2025.jpg" alt="STL Boost Camp 2025"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_stlboost2025.jpg</div>'">
+          </div>
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Startup Thailand League 2025</p>
+              <p class="tl-card-sub">ICU Pet Care Box+ device</p>
+              <div class="badges"><span class="badge-award badge-pass">✅ Participated</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_stl2025.jpg" alt="STL 2025"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_stl2025.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">February 2025</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">I-New Gen Award 2025 (Thailand New Gen Inventors Award)</p>
+              <p class="tl-card-sub">Chronic wound care control device</p>
+              <div class="badges"><span class="badge-award badge-silver">🥈 Silver Medal</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_inewgen2025.jpg" alt="I-New Gen 2025"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_inewgen2025.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">June 2024</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">TED Fund 2024 — Funded</p>
+              <p class="tl-card-sub">Chronic wound care control device</p>
+              <div class="badges"><span class="badge-award badge-fund">💰 ฿100,000 Grant Received</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_tedfund2024.jpg" alt="TED Fund 2024"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_tedfund2024.jpg</div>'">
+          </div>
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Startup Thailand League 2024</p>
+              <p class="tl-card-sub">Chronic wound care control device</p>
+              <div class="badges"><span class="badge-award badge-pass">✅ Participated</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_stl2024.jpg" alt="STL 2024"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_stl2024.jpg</div>'">
+          </div>
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">Smart Start Idea by GSB Startup — Funded</p>
+              <p class="tl-card-sub">Non-invasive sugar level measurement cup</p>
+              <div class="badges"><span class="badge-award badge-fund">💰 ฿50,000 Grant Received</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_smartstart2024.jpg" alt="Smart Start GSB 2024"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_smartstart2024.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-group">
+        <div class="tl-year">February 2024</div>
+        <div class="tl-items">
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">I-New Gen Award 2024 (Thailand New Gen Inventors Award)</p>
+              <p class="tl-card-sub">Fingertip blood pressure monitor</p>
+              <div class="badges">
+                <span class="badge-award badge-gold">🥇 Gold Medal</span>
+                <span class="badge-award badge-gold">🏆 JIP A Award — Best Innovation for ICT</span>
+              </div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_inewgen2024.jpg" alt="I-New Gen 2024"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_inewgen2024.jpg</div>'">
+          </div>
+          <div class="tl-card">
+            <div>
+              <p class="tl-card-title">JIP A Award — Best Innovation for ICT</p>
+              <p class="tl-card-sub">Fingertip blood pressure monitor — special international award</p>
+              <div class="badges"><span class="badge-award badge-gold">🏆 Special International Award</span></div>
+            </div>
+            <img class="tl-card-img" src="assets/images/award_jipa2024.jpg" alt="JIP A Award 2024"
+              onerror="this.outerHTML='<div class=\'tl-card-img-ph\'>award_jipa2024.jpg</div>'">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background: var(--off-white);">
+  <div class="container">
+    <p class="section-eyebrow">Gallery</p>
+    <h2 class="section-title">Activity Photos</h2>
+    <div class="section-line"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="assets/images/award_inewgen2024.jpg" alt="I-New Gen 2024"><div class="gallery-caption">I-New Gen Award 2024 — Gold Medal</div></div>
+      <div class="gallery-item"><img src="assets/images/award_jipa2024.jpg" alt="JIP A Award"><div class="gallery-caption">JIP A Award — Best Innovation for ICT</div></div>
+      <div class="gallery-item"><img src="assets/images/award_tedfund2024.jpg" alt="TED Fund 2024"><div class="gallery-caption">TED Fund 2024 — ฿100,000 Grant</div></div>
+      <div class="gallery-item"><img src="assets/images/award_smartstart2024.jpg" alt="Smart Start GSB"><div class="gallery-caption">Smart Start Idea by GSB — ฿50,000</div></div>
+      <div class="gallery-item"><img src="assets/images/award_stl2024.jpg" alt="STL 2024"><div class="gallery-caption">Startup Thailand League 2024</div></div>
+      <div class="gallery-item"><img src="assets/images/award_inewgen2025.jpg" alt="I-New Gen 2025"><div class="gallery-caption">I-New Gen Award 2025 — Silver Medal</div></div>
+      <div class="gallery-item"><img src="assets/images/award_stlboost2025.jpg" alt="STL Boost Camp 2025"><div class="gallery-caption">STL Boost Camp 2025</div></div>
+      <div class="gallery-item"><img src="assets/images/award_stl2025.jpg" alt="STL 2025"><div class="gallery-caption">Startup Thailand League 2025</div></div>
+      <div class="gallery-item"><img src="assets/images/award_scholarship2025.jpg" alt="Scholarship 2025"><div class="gallery-caption">Medical Device Association Scholarship 2025</div></div>
+      <div class="gallery-item"><img src="assets/images/award_calib_pradhipat.jpg" alt="Pradhipat Hospital"><div class="gallery-caption">Calibration Service — Pradhipat Hospital</div></div>
+      <div class="gallery-item"><img src="assets/images/award_calib_samkoke.jpg" alt="Samkoke Hospital"><div class="gallery-caption">Calibration Service — Samkoke Hospital</div></div>
+      <div class="gallery-item"><img src="assets/images/award_stlboost2026.jpg" alt="STL Boost Camp 2026"><div class="gallery-caption">STL Boost Camp 2026 — 2nd Runner-Up</div></div>
+      <div class="gallery-item"><img src="assets/images/award_stl2026.jpg" alt="STL 2026"><div class="gallery-caption">Startup Thailand League 2026 — Demo Days</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin-bottom:.4rem;color:rgba(255,255,255,0.85);font-weight:500;">Phurida Nanthaphakphong</p>
+  <p>Biomedical Engineering · Rangsit University · Bangkok, Thailand</p>
+  <p style="margin-top:.5rem"><a href="https://github.com/phurida-nan">GitHub</a> · <a href="mailto:phurida@email.com">Email</a></p>
+</footer>
+
+</body>
+</html>
+
