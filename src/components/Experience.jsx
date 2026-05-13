@@ -14,7 +14,7 @@ const experienceGroups = [
     color: '#0369a1',
     bg: 'rgba(14,165,233,0.1)',
     border: 'rgba(14,165,233,0.24)',
-    image: '/assets/images/award_tedfund2024.jpg',
+    image: './assets/images/award_tedfund2024.jpg',
     items: experience.filter((item) =>
       item.type === 'award' && /Award|Fund|Boost|JIP|STL/i.test(item.title)
     ),
@@ -26,7 +26,7 @@ const experienceGroups = [
     color: '#047857',
     bg: 'rgba(16,185,129,0.1)',
     border: 'rgba(16,185,129,0.24)',
-    image: '/assets/images/award_calib_samkoke.jpg',
+    image: './assets/images/award_calib_samkoke.jpg',
     items: experience.filter((item) => item.type === 'work'),
   },
   {
@@ -36,7 +36,7 @@ const experienceGroups = [
     color: '#0f766e',
     bg: 'rgba(20,184,166,0.1)',
     border: 'rgba(20,184,166,0.24)',
-    image: '/assets/images/award_scholarship2025.jpg',
+    image: './assets/images/award_scholarship2025.jpg',
     items: experience.filter((item) => /Scholarship|Conference|qualified/i.test(`${item.title} ${item.desc}`)),
   },
 ];
