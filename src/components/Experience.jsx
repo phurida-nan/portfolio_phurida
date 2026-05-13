@@ -1,8 +1,9 @@
 // src/components/Experience.jsx
 // Evidence-first experience dashboard
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Award, BriefcaseMedical, Coins, Trophy } from 'lucide-react';
+import BioBackground from './BioBackground';
 import { experience, stats } from '../data/portfolioData';
 
 const experienceGroups = [
@@ -114,16 +115,17 @@ function ExperienceGroup({ group, index }) {
 export default function Experience() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const statsY = useTransform(scrollYProgress, [0, 1], [34, -28]);
+  const groupsY = useTransform(scrollYProgress, [0, 1], [54, -50]);
+  const groupsScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1.015, 0.99]);
   const keyStats = stats.slice(0, 3);
 
   return (
     <section id="experience" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-5 blur-3xl"
-        style={{ background: 'radial-gradient(circle, #14b8a6, transparent)' }}
-      />
+      <BioBackground variant="experience" targetRef={ref} />
 
-      <div className="section-container">
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -137,17 +139,17 @@ export default function Experience() {
           <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600" />
         </motion.div>
 
-        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div style={{ y: statsY }} className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {keyStats.map((item, index) => (
             <StatCard key={item.label} item={item} index={index} />
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <motion.div style={{ y: groupsY, scale: groupsScale }} className="grid gap-6 lg:grid-cols-2">
           {experienceGroups.map((group, index) => (
             <ExperienceGroup key={group.title} group={group} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

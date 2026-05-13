@@ -1,8 +1,9 @@
 // src/components/Projects.jsx
 // Category-first case study layout
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Activity, ArrowUpRight, Cpu, Database, Star } from 'lucide-react';
+import BioBackground from './BioBackground';
 import { projects } from '../data/portfolioData';
 
 const colorMap = {
@@ -162,15 +163,15 @@ function WorkGroup({ group, index }) {
 export default function Projects() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const contentY = useTransform(scrollYProgress, [0, 1], [48, -56]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.985, 1.01, 0.99]);
 
   return (
     <section id="projects" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
-      <div
-        className="pointer-events-none absolute left-0 top-1/2 h-64 w-64 rounded-full opacity-5 blur-3xl"
-        style={{ background: 'radial-gradient(circle, #14b8a6, transparent 70%)' }}
-      />
+      <BioBackground variant="work" targetRef={ref} />
 
-      <div className="section-container">
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -184,11 +185,11 @@ export default function Projects() {
           <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600" />
         </motion.div>
 
-        <div className="space-y-12 lg:space-y-16">
+        <motion.div style={{ y: contentY, scale: contentScale }} className="space-y-12 lg:space-y-16">
           {workGroups.map((group, index) => (
             <WorkGroup key={group.title} group={group} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

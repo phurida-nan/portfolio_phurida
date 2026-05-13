@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { GraduationCap, MapPin, Mail } from 'lucide-react';
+import BioBackground from './BioBackground';
 import { personalInfo } from '../data/portfolioData';
 
 const fadeUp = {
@@ -19,19 +20,16 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
 
-  // Parallax on the background ring
-  const bgY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
   const cardX = useTransform(scrollYProgress, [0, 1], [-10, 10]);
+  const cardY = useTransform(scrollYProgress, [0, 1], [42, -42]);
+  const textY = useTransform(scrollYProgress, [0, 1], [24, -30]);
+  const cardScale = useTransform(scrollYProgress, [0, 0.45, 1], [0.97, 1.02, 0.99]);
 
   return (
     <section id="about" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
-      {/* Background parallax ring */}
-      <motion.div
-        style={{ y: bgY, background: 'radial-gradient(circle, #0ea5e9, transparent 70%)' }}
-        className="absolute top-10 right-0 w-96 h-96 rounded-full opacity-5 blur-3xl pointer-events-none"
-      />
+      <BioBackground variant="about" targetRef={ref} />
 
-      <div className="section-container">
+      <div className="section-container relative z-10">
         {/* Section header */}
         <motion.div
           variants={fadeUp}
@@ -49,7 +47,7 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-12">
           {/* Left — Profile Card with Mouse Tilt */}
           <motion.div
-            style={{ x: cardX }}
+            style={{ x: cardX, y: cardY, scale: cardScale }}
             variants={fadeUp}
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
@@ -93,7 +91,7 @@ export default function About() {
           </motion.div>
 
           {/* Right — Bio + Highlights */}
-          <div className="grid gap-6 lg:min-h-[560px] lg:grid-rows-[auto_1fr]">
+          <motion.div style={{ y: textY }} className="grid gap-6 lg:min-h-[560px] lg:grid-rows-[auto_1fr]">
             {/* Bio text */}
             <motion.div variants={fadeUp} initial="hidden" animate={inView ? 'show' : 'hidden'} custom={1}>
               <h3 className="mb-4 text-2xl font-bold leading-tight text-bio-50 sm:mb-5 sm:text-3xl">Medical devices, clinical evidence, hospital use.</h3>
@@ -132,7 +130,7 @@ export default function About() {
                 </motion.div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
