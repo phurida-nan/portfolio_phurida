@@ -49,7 +49,7 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-transparent"
+      className="relative flex min-h-[100svh] items-center overflow-hidden bg-transparent"
     >
       {/* Grid Background */}
       <div className="absolute inset-0 bg-grid opacity-60" />
@@ -79,7 +79,7 @@ export default function Hero() {
           WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
           maskImage: 'radial-gradient(ellipse at center, black 60%, transparent 100%)'
         }}
-        className="absolute right-0 lg:right-10 top-0 w-full lg:w-1/2 h-full opacity-70 pointer-events-none"
+        className="pointer-events-none absolute right-[-42%] top-14 h-[52%] w-[105%] opacity-25 md:right-[-20%] md:top-0 md:h-full md:w-[80%] md:opacity-35 lg:right-10 lg:w-1/2 lg:opacity-70"
         transition={{ type: 'spring', stiffness: 50, damping: 20 }}
       >
         <DnaHelix />
@@ -116,7 +116,7 @@ export default function Hero() {
       {/* === PARALLAX LAYER 3 — Main Content (closest) === */}
       <motion.div
         style={{ y: y3, opacity }}
-        className="relative z-10 section-container w-full pt-24 pb-16"
+        className="relative z-10 section-container w-full pb-14 pt-24 sm:pb-16 lg:pt-28"
       >
         <div className="max-w-2xl">
           {/* Badge */}
@@ -124,7 +124,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-medium"
+            className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full px-3 py-2 text-xs font-medium sm:mb-6 sm:px-4"
             style={{
               background: 'rgba(14,165,233,0.1)',
               border: '1px solid rgba(14,165,233,0.22)',
@@ -137,7 +137,7 @@ export default function Hero() {
 
           {/* Name */}
           <motion.h1
-            className="text-5xl lg:text-7xl font-black tracking-tight mb-4 leading-tight"
+            className="mb-4 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-7xl"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -147,19 +147,19 @@ export default function Hero() {
 
           {/* Title with typing effect */}
           <motion.div
-            className="text-2xl lg:text-3xl font-semibold mb-6"
+            className="mb-5 text-xl font-semibold sm:mb-6 sm:text-2xl lg:text-3xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <span className="gradient-text">{personalInfo.titleEn}</span>
             <br />
-            <span className="text-bio-200 text-xl">{personalInfo.title}</span>
+            <span className="text-base text-bio-200 sm:text-xl">{personalInfo.title}</span>
           </motion.div>
 
           {/* Bio */}
           <motion.p
-            className="text-bio-200 text-lg leading-relaxed mb-8 max-w-xl"
+            className="mb-7 max-w-xl text-base leading-relaxed text-bio-200 sm:mb-8 sm:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.6 }}
@@ -169,13 +169,13 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-wrap gap-4"
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
             <motion.button
-              className="btn-solid text-sm px-8 py-3.5"
+              className="btn-solid w-full px-8 py-3.5 text-sm sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -185,7 +185,7 @@ export default function Hero() {
             <motion.a
               href={personalInfo.resumeUrl}
               download
-              className="btn-neon text-sm px-8 py-3.5 inline-flex items-center"
+              className="btn-neon inline-flex w-full items-center justify-center px-8 py-3.5 text-sm sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -195,7 +195,7 @@ export default function Hero() {
 
           {/* Stats Row */}
           <motion.div
-            className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-bio-600/30"
+            className="mt-10 grid grid-cols-2 gap-5 border-t border-bio-600/30 pt-6 sm:mt-12 sm:flex sm:flex-wrap sm:gap-8 sm:pt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.6 }}
@@ -213,7 +213,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.button
         style={{ opacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-bio-300 hover:text-cyan-700 transition-colors z-10"
+        className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-bio-300 transition-colors hover:text-cyan-700 sm:flex lg:bottom-8"
         onClick={scrollToAbout}
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}

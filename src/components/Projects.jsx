@@ -59,7 +59,7 @@ function ProjectCard({ project, featured = false, index }) {
     >
       <div className={`grid h-full ${featured ? 'lg:grid-cols-[1.12fr_0.88fr]' : ''}`}>
         {project.image && (
-          <div className={`${featured ? 'h-80 lg:h-full' : 'h-60'} overflow-hidden bg-bio-700/20`}>
+          <div className={`${featured ? 'h-60 sm:h-72 lg:h-full' : 'h-52 sm:h-60'} overflow-hidden bg-bio-700/20`}>
             <img
               src={project.image}
               alt={project.title}
@@ -68,7 +68,7 @@ function ProjectCard({ project, featured = false, index }) {
           </div>
         )}
 
-        <div className="flex h-full flex-col p-6">
+        <div className="flex h-full flex-col p-5 sm:p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <span className="font-mono text-xs font-semibold" style={{ color: c.text }}>
               {project.category}
@@ -84,7 +84,7 @@ function ProjectCard({ project, featured = false, index }) {
             )}
           </div>
 
-          <h3 className={`${featured ? 'text-2xl' : 'text-lg'} font-bold leading-tight text-bio-50`}>
+          <h3 className={`${featured ? 'text-xl sm:text-2xl' : 'text-lg'} font-bold leading-tight text-bio-50`}>
             {project.title}
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-bio-300">{project.description}</p>
@@ -124,7 +124,7 @@ function WorkGroup({ group, index }) {
       transition={{ delay: index * 0.1, duration: 0.55 }}
       className="space-y-5"
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3 sm:gap-4">
         <div
           className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
           style={{ background: group.bg, color: group.color, border: `1px solid ${group.border}` }}
@@ -133,7 +133,7 @@ function WorkGroup({ group, index }) {
         </div>
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            <h3 className="text-2xl font-bold text-bio-50">{group.title}</h3>
+            <h3 className="text-xl font-bold text-bio-50 sm:text-2xl">{group.title}</h3>
             <span
               className="rounded-full px-3 py-1 text-xs font-bold"
               style={{ background: group.bg, color: group.color }}
@@ -164,7 +164,7 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="projects" ref={ref} className="relative overflow-hidden py-32">
+    <section id="projects" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
       <div
         className="pointer-events-none absolute left-0 top-1/2 h-64 w-64 rounded-full opacity-5 blur-3xl"
         style={{ background: 'radial-gradient(circle, #14b8a6, transparent 70%)' }}
@@ -175,7 +175,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-10 lg:mb-14"
         >
           <p className="mb-3 font-mono text-sm uppercase tracking-widest text-cyan-700">03. Projects</p>
           <h2 className="section-title">
@@ -184,7 +184,7 @@ export default function Projects() {
           <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600" />
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="space-y-12 lg:space-y-16">
           {workGroups.map((group, index) => (
             <WorkGroup key={group.title} group={group} index={index} />
           ))}

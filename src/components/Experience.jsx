@@ -73,12 +73,12 @@ function ExperienceGroup({ group, index }) {
       className={`glass-card overflow-hidden ${index === 0 ? 'lg:col-span-2' : ''}`}
     >
       <div className={`grid h-full ${index === 0 ? 'lg:grid-cols-[1.15fr_0.85fr]' : ''}`}>
-        <div className={`${index === 0 ? 'h-80 lg:h-full' : 'h-64'} overflow-hidden bg-bio-700/20`}>
+        <div className={`${index === 0 ? 'h-60 sm:h-72 lg:h-full' : 'h-56 sm:h-64'} overflow-hidden bg-bio-700/20`}>
           <img src={group.image} alt={group.title} className="h-full w-full object-cover" />
         </div>
 
-        <div className="flex h-full flex-col p-6">
-          <div className="mb-5 flex items-start gap-4">
+        <div className="flex h-full flex-col p-5 sm:p-6">
+          <div className="mb-5 flex items-start gap-3 sm:gap-4">
             <div
               className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
               style={{ background: group.bg, color: group.color, border: `1px solid ${group.border}` }}
@@ -117,7 +117,7 @@ export default function Experience() {
   const keyStats = stats.slice(0, 3);
 
   return (
-    <section id="experience" ref={ref} className="relative overflow-hidden py-32">
+    <section id="experience" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-5 blur-3xl"
         style={{ background: 'radial-gradient(circle, #14b8a6, transparent)' }}
@@ -128,7 +128,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-10 lg:mb-12"
         >
           <p className="mb-3 font-mono text-sm uppercase tracking-widest text-cyan-700">02. Experience</p>
           <h2 className="section-title">
@@ -137,7 +137,7 @@ export default function Experience() {
           <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600" />
         </motion.div>
 
-        <div className="mb-8 grid gap-4 md:grid-cols-3">
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {keyStats.map((item, index) => (
             <StatCard key={item.label} item={item} index={index} />
           ))}

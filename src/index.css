@@ -109,7 +109,7 @@
 
   /* Section Container */
   .section-container {
-    @apply max-w-7xl mx-auto px-6 lg:px-12;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-12;
   }
 
   /* Grid Background */
@@ -154,7 +154,7 @@
 
   /* Section Title */
   .section-title {
-    @apply text-4xl lg:text-5xl font-bold mb-4;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold mb-4;
   }
 
   .section-subtitle {

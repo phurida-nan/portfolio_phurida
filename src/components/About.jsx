@@ -24,7 +24,7 @@ export default function About() {
   const cardX = useTransform(scrollYProgress, [0, 1], [-10, 10]);
 
   return (
-    <section id="about" ref={ref} className="relative py-32 overflow-hidden">
+    <section id="about" ref={ref} className="relative overflow-hidden py-20 lg:py-32">
       {/* Background parallax ring */}
       <motion.div
         style={{ y: bgY, background: 'radial-gradient(circle, #0ea5e9, transparent 70%)' }}
@@ -37,7 +37,7 @@ export default function About() {
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="mb-12"
+          className="mb-8 lg:mb-12"
         >
           <p className="text-cyan-700 text-sm font-mono tracking-widest uppercase mb-3">01. About</p>
           <h2 className="section-title">
@@ -46,7 +46,7 @@ export default function About() {
           <div className="w-16 h-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 mt-4" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-12 items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-12">
           {/* Left — Profile Card with Mouse Tilt */}
           <motion.div
             style={{ x: cardX }}
@@ -62,21 +62,15 @@ export default function About() {
               style={{ transformStyle: 'preserve-3d', perspective: 800 }}
             >
               {/* Avatar */}
-              <div className="relative w-full max-w-[360px] h-[400px] mx-auto mb-5">
+              <div className="relative mx-auto mb-5 h-[320px] w-full max-w-[360px] sm:h-[380px] lg:h-[400px]">
                 <div className="w-full h-full rounded-2xl bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 p-1">
                   <div className="w-full h-full rounded-2xl bg-white overflow-hidden flex items-center justify-center">
                     <img src={personalInfo.avatarUrl} alt="Profile" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                {/* Status dot */}
-                <div className="absolute -bottom-1 -right-1 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
-                  style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.26)', color: '#047857' }}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Active
-                </div>
               </div>
 
-              <h3 className="text-xl font-bold text-bio-50 mb-1">{personalInfo.name}</h3>
+              <h3 className="mb-1 text-lg font-bold text-bio-50 sm:text-xl">{personalInfo.name}</h3>
               <p className="gradient-text font-semibold mb-1">{personalInfo.titleEn}</p>
               <p className="text-bio-300 text-sm mb-4">{personalInfo.year}</p>
 
@@ -102,7 +96,7 @@ export default function About() {
           <div className="grid gap-6 lg:min-h-[560px] lg:grid-rows-[auto_1fr]">
             {/* Bio text */}
             <motion.div variants={fadeUp} initial="hidden" animate={inView ? 'show' : 'hidden'} custom={1}>
-              <h3 className="text-3xl font-bold leading-tight text-bio-50 mb-5">Medical devices, clinical evidence, hospital use.</h3>
+              <h3 className="mb-4 text-2xl font-bold leading-tight text-bio-50 sm:mb-5 sm:text-3xl">Medical devices, clinical evidence, hospital use.</h3>
               <div className="max-w-2xl space-y-3 text-bio-200 leading-relaxed">
                 <p>{personalInfo.aboutText1}</p>
                 <p>{personalInfo.aboutText2}</p>
