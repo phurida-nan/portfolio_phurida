@@ -7,9 +7,7 @@ import Footer from './components/Footer';
 // Lazy load heavy sections
 const About      = lazy(() => import('./components/About'));
 const Projects   = lazy(() => import('./components/Projects'));
-const Skills     = lazy(() => import('./components/Skills'));
 const Experience = lazy(() => import('./components/Experience'));
-const Contact    = lazy(() => import('./components/Contact'));
 
 const SectionFallback = () => (
   <div className="flex items-center justify-center py-32">
@@ -25,10 +23,8 @@ export default function App() {
         <Hero />
         <Suspense fallback={<SectionFallback />}>
           <About />
-          <Projects />
-          <Skills />
           <Experience />
-          <Contact />
+          <Projects />
         </Suspense>
       </main>
       <Footer />

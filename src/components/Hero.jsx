@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown, Microscope, Cpu, Heart, FlaskConical } from 'lucide-react';
 import DnaHelix from './DnaHelix';
-import { personalInfo } from '../data/portfolioData';
+import { personalInfo, stats } from '../data/portfolioData';
 
 const floatingIcons = [
   { icon: <Microscope className="w-6 h-6" />, x: '10%', y: '25%', delay: 0,    color: 'cyan' },
@@ -182,14 +182,15 @@ export default function Hero() {
             >
               View My Work
             </motion.button>
-            <motion.button
-              className="btn-neon text-sm px-8 py-3.5"
+            <motion.a
+              href={personalInfo.resumeUrl}
+              download
+              className="btn-neon text-sm px-8 py-3.5 inline-flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Get In Touch
-            </motion.button>
+              Download CV
+            </motion.a>
           </motion.div>
 
           {/* Stats Row */}
@@ -199,13 +200,9 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            {[
-              { label: 'Projects', value: '12+' },
-              { label: 'Research', value: '3' },
-              { label: 'GPA', value: '3.8' },
-            ].map((s) => (
+            {stats.slice(0, 4).map((s) => (
               <div key={s.label}>
-                <div className="text-2xl font-bold gradient-text">{s.value}</div>
+                <div className="text-2xl font-bold gradient-text">{s.value}{s.suffix}</div>
                 <div className="text-xs text-bio-300 mt-0.5">{s.label}</div>
               </div>
             ))}

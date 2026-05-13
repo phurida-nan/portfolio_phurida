@@ -2,8 +2,7 @@
 // About section with parallax scroll, profile card, education timeline
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, MapPin, Mail, User } from 'lucide-react';
-import { Linkedin, Github } from './Icons';
+import { GraduationCap, MapPin, Mail } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const fadeUp = {
@@ -22,7 +21,7 @@ export default function About() {
 
   // Parallax on the background ring
   const bgY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-  const cardX = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const cardX = useTransform(scrollYProgress, [0, 1], [-10, 10]);
 
   return (
     <section id="about" ref={ref} className="relative py-32 overflow-hidden">
@@ -38,16 +37,16 @@ export default function About() {
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="mb-16"
+          className="mb-12"
         >
           <p className="text-cyan-700 text-sm font-mono tracking-widest uppercase mb-3">01. About</p>
           <h2 className="section-title">
-            Who <span className="gradient-text">Am I?</span>
+            About <span className="gradient-text">Me</span>
           </h2>
           <div className="w-16 h-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 mt-4" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-12 items-start">
           {/* Left — Profile Card with Mouse Tilt */}
           <motion.div
             style={{ x: cardX }}
@@ -57,16 +56,16 @@ export default function About() {
             custom={0}
           >
             <motion.div
-              className="relative glass-card p-8 text-center"
+              className="relative glass-card p-5 text-center"
               whileHover={{ rotateY: 5, rotateX: -3, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 150, damping: 20 }}
               style={{ transformStyle: 'preserve-3d', perspective: 800 }}
             >
               {/* Avatar */}
-              <div className="relative w-32 h-32 mx-auto mb-6">
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 p-0.5">
-                  <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
-                    <User className="w-16 h-16 text-bio-300" />
+              <div className="relative w-full max-w-[360px] h-[400px] mx-auto mb-5">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 p-1">
+                  <div className="w-full h-full rounded-2xl bg-white overflow-hidden flex items-center justify-center">
+                    <img src={personalInfo.avatarUrl} alt="Profile" className="w-full h-full object-cover" />
                   </div>
                 </div>
                 {/* Status dot */}
@@ -77,12 +76,12 @@ export default function About() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-bold text-bio-50 mb-1">{personalInfo.name}</h3>
+              <h3 className="text-xl font-bold text-bio-50 mb-1">{personalInfo.name}</h3>
               <p className="gradient-text font-semibold mb-1">{personalInfo.titleEn}</p>
-              <p className="text-bio-300 text-sm mb-5">{personalInfo.year}</p>
+              <p className="text-bio-300 text-sm mb-4">{personalInfo.year}</p>
 
               {/* Info rows */}
-              <div className="space-y-3 text-sm text-bio-200">
+              <div className="space-y-2.5 text-sm text-bio-200">
                 <div className="flex items-center gap-3 justify-center">
                   <GraduationCap className="w-4 h-4 text-cyan-700 shrink-0" />
                   <span>{personalInfo.universityEn}</span>
@@ -96,71 +95,46 @@ export default function About() {
                   <span>{personalInfo.email}</span>
                 </div>
               </div>
-
-              {/* Social Links */}
-              <div className="flex justify-center gap-3 mt-6 pt-5 border-t border-bio-500/30">
-                {[
-                  { icon: <Linkedin className="w-4 h-4" />, href: personalInfo.linkedin, color: '#0369a1' },
-                  { icon: <Github className="w-4 h-4" />, href: personalInfo.github, color: '#334155' },
-                  { icon: <Mail className="w-4 h-4" />, href: `mailto:${personalInfo.email}`, color: '#0f766e' },
-                ].map((s, i) => (
-                  <motion.a
-                    key={i}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300"
-                    style={{
-                      background: 'rgba(255,255,255,0.75)',
-                      border: '1px solid rgba(14,116,144,0.14)',
-                      color: s.color,
-                    }}
-                    whileHover={{ scale: 1.2, y: -3 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    {s.icon}
-                  </motion.a>
-                ))}
-              </div>
             </motion.div>
           </motion.div>
 
           {/* Right — Bio + Highlights */}
-          <div className="space-y-8">
+          <div className="grid gap-6 lg:min-h-[560px] lg:grid-rows-[auto_1fr]">
             {/* Bio text */}
             <motion.div variants={fadeUp} initial="hidden" animate={inView ? 'show' : 'hidden'} custom={1}>
-              <h3 className="text-2xl font-bold text-bio-50 mb-4">สวัสดี! ฉันคือ <span className="gradient-text">{personalInfo.name}</span> 👋</h3>
-              <p className="text-bio-200 leading-relaxed mb-4">{personalInfo.bio}</p>
-              <p className="text-bio-200 leading-relaxed">
-                มีความสนใจในการพัฒนา <span className="text-cyan-700 font-medium">Medical Devices</span>,{' '}
-                <span className="text-teal-700 font-medium">Biosensors</span> และการประยุกต์ใช้{' '}
-                <span className="text-emerald-700 font-medium">AI/ML</span> ในทางการแพทย์
-              </p>
+              <h3 className="text-3xl font-bold leading-tight text-bio-50 mb-5">Medical devices, clinical evidence, hospital use.</h3>
+              <div className="max-w-2xl space-y-3 text-bio-200 leading-relaxed">
+                <p>{personalInfo.aboutText1}</p>
+                <p>{personalInfo.aboutText2}</p>
+                <p className="font-semibold text-bio-100">{personalInfo.aboutText3}</p>
+              </div>
             </motion.div>
 
             {/* Highlight Cards */}
             <motion.div
-              className="grid grid-cols-2 gap-4"
+              className="grid gap-3"
               variants={fadeUp}
               initial="hidden"
               animate={inView ? 'show' : 'hidden'}
               custom={2}
             >
               {[
-                { icon: '🧬', label: 'Biomedical Research', desc: 'Biosensor & Signal' },
-                { icon: '🤖', label: 'AI in Healthcare', desc: 'Medical Imaging AI' },
-                { icon: '⚡', label: 'IoT Devices', desc: 'Arduino, Raspberry Pi' },
-                { icon: '🔬', label: 'Lab Techniques', desc: 'PCR, Cell Culture' },
+                { icon: '📋', label: 'Clinical Study', desc: 'Protocol & IRB' },
+                { icon: '💡', label: 'Device Value', desc: 'Pitch & market fit' },
+                { icon: '⚡', label: 'Prototype', desc: 'Hardware control' },
+                { icon: '🏥', label: 'Hospital Use', desc: 'Deployment work' },
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  className="glass-card-hover p-4"
+                  className="glass-card-hover grid grid-cols-[3rem_1fr] items-center gap-4 p-4"
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <div className="text-2xl mb-2">{item.icon}</div>
-                  <div className="text-bio-50 font-semibold text-sm">{item.label}</div>
-                  <div className="text-bio-300 text-xs mt-1">{item.desc}</div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-600/10 text-2xl">{item.icon}</div>
+                  <div>
+                    <div className="text-bio-50 font-semibold text-sm">{item.label}</div>
+                    <div className="text-bio-300 text-xs mt-1">{item.desc}</div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

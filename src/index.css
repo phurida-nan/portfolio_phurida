@@ -183,6 +183,7 @@
   .stat-number {
     @apply text-4xl font-bold gradient-text;
   }
+
 }
 
 @layer utilities {

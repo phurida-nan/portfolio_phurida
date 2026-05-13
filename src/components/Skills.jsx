@@ -70,10 +70,10 @@ export default function Skills() {
           <div className="w-16 h-1 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600 mt-4" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Technical Skills */}
           <motion.div
-            className="glass-card p-8 col-span-2"
+            className="glass-card p-8"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.6 }}
@@ -86,9 +86,21 @@ export default function Skills() {
                 <SkillBar key={s.name} {...s} index={i} color="#0284c7" />
               ))}
             </div>
+            
+            {/* Commercial Skills */}
+            <div className="mt-8 pt-6 border-t border-bio-600/30">
+              <h3 className="text-bio-50 font-bold text-lg mb-6 flex items-center gap-2">
+                <span className="text-amber-500">💡</span> Commercial Awareness
+              </h3>
+              <div className="space-y-5">
+                {skills.commercial.map((s, i) => (
+                  <SkillBar key={s.name} {...s} index={i} color="#d97706" />
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Lab Skills */}
+          {/* Clinical Skills */}
           <motion.div
             className="glass-card p-8"
             initial={{ opacity: 0, y: 30 }}
@@ -96,66 +108,36 @@ export default function Skills() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <h3 className="text-bio-50 font-bold text-lg mb-6 flex items-center gap-2">
-              <span className="text-emerald-600">🔬</span> Lab Skills
+              <span className="text-emerald-600">📋</span> Clinical & Scientific
             </h3>
             <div className="space-y-5">
-              {skills.lab.map((s, i) => (
+              {skills.clinical.map((s, i) => (
                 <SkillBar key={s.name} {...s} index={i} color="#059669" />
               ))}
-            </div>
-
-            {/* Soft Skills */}
-            <div className="mt-8 pt-6 border-t border-bio-600/30">
-              <h4 className="text-bio-200 font-semibold text-sm mb-4">Soft Skills</h4>
-              <div className="flex flex-wrap gap-2">
-                {skills.soft.map((s, i) => (
-                  <motion.span
-                    key={s}
-                    className="tag-teal text-xs"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: i * 0.06 + 0.4 }}
-                  >
-                    {s}
-                  </motion.span>
-                ))}
-              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Tool Badges Row */}
+        {/* Therapeutics Row */}
         <motion.div
           className="mt-10 glass-card p-6"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <p className="text-bio-300 text-sm font-medium mb-4">Tools & Technologies I Work With</p>
+          <p className="text-bio-300 text-sm font-medium mb-4">Therapeutic Areas</p>
           <div className="flex flex-wrap gap-3">
-            {[
-              { name: 'MATLAB',     emoji: '📊' },
-              { name: 'Python',     emoji: '🐍' },
-              { name: 'Arduino',    emoji: '⚡' },
-              { name: 'TensorFlow', emoji: '🤖' },
-              { name: 'SolidWorks', emoji: '⚙️' },
-              { name: 'FIJI/ImageJ', emoji: '🖼️' },
-              { name: 'R Studio',   emoji: '📈' },
-              { name: 'LabVIEW',    emoji: '🔌' },
-              { name: 'LaTeX',      emoji: '📄' },
-              { name: 'Git',        emoji: '🌿' },
-            ].map((tool, i) => (
+            {skills.therapeutics.map((area, i) => (
               <motion.div
-                key={tool.name}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-bio-200 hover:text-bio-50 transition-all duration-200 cursor-default"
-                style={{ background: 'rgba(255,255,255,0.74)', border: '1px solid rgba(14,116,144,0.14)' }}
-                whileHover={{ scale: 1.05, borderColor: 'rgba(14,165,233,0.32)', color: '#0369a1' }}
+                key={area}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-bio-50 transition-all duration-200 cursor-default"
+                style={{ background: 'rgba(2,132,199,0.1)', border: '1px solid rgba(2,132,199,0.3)' }}
+                whileHover={{ scale: 1.05, background: 'rgba(2,132,199,0.2)' }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.05 + 0.5 }}
               >
-                <span>{tool.emoji}</span>
-                <span>{tool.name}</span>
+                <span>{area}</span>
               </motion.div>
             ))}
           </div>

@@ -2,14 +2,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Dna, Download } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects', href: '#projects' },
 ];
 
 export default function Navbar() {
@@ -101,14 +100,16 @@ export default function Navbar() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <motion.button
+            <motion.a
+              href={personalInfo.resumeUrl}
+              download
               className="hidden md:flex items-center gap-2 btn-neon text-xs"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Download className="w-3.5 h-3.5" />
               Download CV
-            </motion.button>
+            </motion.a>
 
             <motion.button
               className="md:hidden p-2 rounded-lg text-bio-200 hover:text-cyan-700 transition-colors"
@@ -145,9 +146,9 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
-              <button className="mt-2 btn-solid text-sm flex items-center justify-center gap-2">
+              <a href={personalInfo.resumeUrl} download className="mt-2 btn-solid text-sm flex items-center justify-center gap-2 py-3">
                 <Download className="w-4 h-4" /> Download CV
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
