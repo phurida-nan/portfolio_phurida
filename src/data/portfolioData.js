@@ -1,5 +1,4 @@
 // src/data/portfolioData.js
-// ข้อมูลทั้งหมดของ Portfolio — อ้างอิงจากข้อมูลเดิม
 
 export const personalInfo = {
   name: "Phurida Nanthaphakphong",
@@ -12,7 +11,7 @@ export const personalInfo = {
   year: "นักศึกษาชั้นปีที่ 4",
   email: "phurida.np@gmail.com",
   github: "https://github.com/phurida-nan",
-  bio: "Final-year Biomedical Engineering student focused on medical devices, clinical evidence, and hospital-ready systems.",
+  bio: "Final-year Biomedical Engineering student with genuine interest in how medical technologies create meaningful outcomes for patients and healthcare systems — backed by hands-on device work, clinical study design, and real-world hospital deployments.",
   aboutText1: "Biomedical Engineering student at Rangsit University, graduating in 2026.",
   aboutText2: "Hands-on experience in device prototyping, IRB preparation, competition pitching, and hospital deployment.",
   aboutText3: "Seeking an internship in medical technology, clinical product development, or healthcare innovation.",
@@ -51,7 +50,7 @@ export const projects = [
     title: "Photobiomodulation for Blood Glucose Management",
     titleTh: "อุปกรณ์ลดระดับน้ำตาลในเลือดด้วยแสง PBM",
     category: "Device · Diabetes",
-    description: "660 nm PBM wearable for non-invasive glucose management. Built PWM control, clinical protocol, and IRB proposal.",
+    description: "Wearable 660 nm LED vest using PWM-controlled light therapy targeting subcutaneous blood vessels to modulate glucose levels non-invasively in Type 2 Diabetes patients. Conducted preliminary clinical protocol and submitted IRB proposal. STL 2026 Demo Days qualifier.",
     tags: ["PWM Control", "LED", "IRB Proposal", "Clinical Protocol"],
     color: "cyan",
     icon: "⚡",
@@ -64,7 +63,7 @@ export const projects = [
     title: "Chronic Wound Care Control Device",
     titleTh: "อุปกรณ์ควบคุมการดูแลรักษาแผลเรื้อรัง",
     category: "Device · Wound Care",
-    description: "Therapeutic control device for chronic wound care. Recognized by clinical and industry judging panels.",
+    description: "Therapeutic control system delivering optimized stimulation to alleviate chronic wounds, targeting diabetic and elderly patients with limited access to advanced care. Recognized by clinical and industry judging panels. Gold Medal I-New Gen 2024, Silver Medal 2025, TED Fund ฿100,000.",
     tags: ["Therapeutic Device", "Hardware", "Wound Care"],
     color: "emerald",
     icon: "🩹",
@@ -77,7 +76,7 @@ export const projects = [
     title: "HRV-Based Stress Analysis System",
     titleTh: "ระบบวิเคราะห์ความเครียดจาก HRV",
     category: "Analytics · Mental Health",
-    description: "Real-time HRV signal processing and ML classification for objective stress analysis.",
+    description: "Real-time HRV signal processing and ML classification for objective stress detection — understanding how physiological biomarkers support clinical decision-making in occupational and clinical settings.",
     tags: ["Signal Processing", "Machine Learning", "HRV"],
     color: "indigo",
     icon: "🧠",
@@ -90,7 +89,7 @@ export const projects = [
     title: "Cardiac Risk Prediction System",
     titleTh: "ระบบทำนายความเสี่ยงโรคหัวใจ",
     category: "Analytics · Cardiology",
-    description: "Predictive risk platform for early cardiac risk screening and clinical pathway support.",
+    description: "Early-warning cardiovascular disease risk analysis platform combining physiological signal acquisition with predictive modeling and risk stratification — exploring how data-driven tools fit into clinical pathways.",
     tags: ["Risk Prediction", "Data Analysis", "Cardiology"],
     color: "rose",
     icon: "🫀",
@@ -103,7 +102,7 @@ export const projects = [
     title: "Medical Equipment Management System (MEMS)",
     titleTh: "ระบบจัดการอุปกรณ์ทางการแพทย์",
     category: "System · Hospital Ops",
-    description: "PHP/MySQL platform for equipment borrowing, inventory, and audit trails in hospital operations.",
+    description: "Hospital-grade PHP/MySQL web application for equipment borrowing/return workflows, role-based access control, audit logs, and Bootstrap 5 responsive UI — deployed and used in real hospital settings.",
     tags: ["PHP", "MySQL", "Web App", "Hospital Operations"],
     color: "sky",
     icon: "💻",
@@ -116,7 +115,7 @@ export const projects = [
     title: "Medical Inventory & Calibration Management",
     titleTh: "ระบบจัดการคลังและสอบเทียบอุปกรณ์ทางการแพทย์",
     category: "System · Calibration",
-    description: "Calibration inventory and Masterlist system for safer equipment records during hospital deployment.",
+    description: "Centralized equipment inventory and calibration management platform with Masterlist management for safer equipment records. Deployed at Pradhipat and Samkoke hospitals; served as primary Masterlist officer.",
     tags: ["Calibration", "Inventory System", "Masterlist"],
     color: "amber",
     icon: "🔧",
@@ -129,84 +128,168 @@ export const projects = [
 export const experience = [
   {
     year: "June 2026",
+    month: "มิ.ย. 2569",
     title: "SITE2026 — Global Innovation Impact",
     org: "SITE2026 International Showcase",
     desc: "Presented the blood glucose reduction via photobiomodulation device at an international innovation showcase.",
     type: "award",
     image: "./assets/images/award_site2026.jpg",
-    badge: "🌐 International Showcase"
-  },
-  {
-    year: "January 2026",
-    title: "Life Saver Hub — Outstanding Innovation Showcase",
-    org: "Medical Engineering & Health Technology Exhibition",
-    desc: "Presented two innovations under zone 'Life Saver Hub: Every Second Counts' — non-invasive blood glucose monitor and non-invasive sugar level measurement cup.",
-    type: "award",
-    image: "./assets/images/award_lifesaverhub2026.jpg",
-    badge: "🏥 Innovation Showcase"
+    badge: "🌐 International Showcase",
+    badgeType: "pass"
   },
   {
     year: "April 2026",
+    month: "เม.ย. 2569",
     title: "STL Boost Camp 2026 — 2nd Runner-Up",
     org: "Startup Thailand League",
-    desc: "Blood glucose reduction via photobiomodulation wearable device. (Also Demo Days qualified for Central & Eastern region)",
+    desc: "Blood glucose reduction via photobiomodulation wearable device. Qualified Demo Days for Central & Eastern region.",
     type: "award",
     image: "./assets/images/award_stlboost2026.jpg",
-    badge: "🥈 2nd Runner-Up"
+    badge: "🥉 2nd Runner-Up",
+    badgeType: "fund"
+  },
+  {
+    year: "April 2026",
+    month: "เม.ย. 2569",
+    title: "Startup Thailand League 2026",
+    org: "Startup Thailand",
+    desc: "Blood glucose reduction via photobiomodulation — qualified Demo Days for Central & Eastern region.",
+    type: "award",
+    image: "./assets/images/award_stl2026.jpg",
+    badge: "✅ Demo Days Qualified",
+    badgeType: "pass"
+  },
+  {
+    year: "January 2026",
+    month: "ม.ค. 2569",
+    title: "Life Saver Hub — Outstanding Innovation Showcase",
+    org: "Medical Engineering & Health Technology Exhibition",
+    desc: "นำเสนอผลงานนวัตกรรมเด่นด้านวิศวกรรมการแพทย์และเทคโนโลยีสุขภาพ ภายใต้โซน Life Saver Hub — ทุกวินาทีคือชีวิต ด้วยเครื่องวัดน้ำตาลในเลือดแบบไม่รุกล้ำ และแก้ววัดความหวาน",
+    type: "award",
+    image: "./assets/images/award_lifesaverhub2026.jpg",
+    badge: "🏥 Innovation Showcase",
+    badgeType: "pass"
   },
   {
     year: "November 2025",
-    title: "Medical Device Calibration Service",
+    month: "พ.ย. 2568",
+    title: "Medical Device Calibration Service — Samkoke Hospital",
     org: "Samkoke Hospital",
-    desc: "Academic calibration service; served as primary Masterlist officer.",
+    desc: "Academic calibration service; served as primary Masterlist officer for medical instrument records.",
     type: "work",
     image: "./assets/images/award_calib_samkoke.jpg",
-    badge: "🔧 Primary Masterlist Officer"
+    badge: "🔧 Primary Masterlist Officer",
+    badgeType: "service"
   },
   {
     year: "August 2025",
+    month: "ส.ค. 2568",
     title: "Medical Device Association Scholarship",
     org: "35th Medical Equipment Academic Conference",
-    desc: "Selected as a scholarship recipient at the national conference.",
+    desc: "Selected as a scholarship recipient at the national medical device academic conference.",
     type: "award",
     image: "./assets/images/award_scholarship2025.jpg",
-    badge: "🎓 Scholarship"
+    badge: "🎓 Scholarship Recipient",
+    badgeType: "scholar"
   },
   {
     year: "July 2025",
-    title: "Medical Device Calibration Service",
+    month: "ก.ค. 2568",
+    title: "Medical Device Calibration Service — Pradhipat Hospital",
     org: "Pradhipat Hospital",
     desc: "Provided academic calibration service for medical instruments.",
     type: "work",
     image: "./assets/images/award_calib_pradhipat.jpg",
-    badge: "🔧 Calibration Service"
+    badge: "🔧 Calibration Service",
+    badgeType: "service"
+  },
+  {
+    year: "April 2025",
+    month: "เม.ย. 2568",
+    title: "STL Boost Camp 2025",
+    org: "Startup Thailand League",
+    desc: "Non-invasive blood albumin measurement device.",
+    type: "award",
+    image: "./assets/images/award_stlboost2025.jpg",
+    badge: "✅ Participated",
+    badgeType: "pass"
+  },
+  {
+    year: "April 2025",
+    month: "เม.ย. 2568",
+    title: "Startup Thailand League 2025",
+    org: "Startup Thailand",
+    desc: "ICU Pet Care Box+ device.",
+    type: "award",
+    image: "./assets/images/award_stl2025.jpg",
+    badge: "✅ Participated",
+    badgeType: "pass"
   },
   {
     year: "February 2025",
+    month: "ก.พ. 2568",
     title: "I-New Gen Award 2025",
     org: "National Research Council of Thailand (NRCT)",
-    desc: "Silver Medal for Chronic wound care control device.",
+    desc: "Silver Medal for Chronic wound care control device at Thailand New Gen Inventors Award.",
     type: "award",
     image: "./assets/images/award_inewgen2025.jpg",
-    badge: "🥈 Silver Medal"
+    badge: "🥈 Silver Medal",
+    badgeType: "silver"
   },
   {
     year: "June 2024",
-    title: "TED Fund 2024 & Smart Start Idea by GSB Startup",
-    org: "Funding Bodies",
-    desc: "Received ฿100,000 grant from TED Fund for Chronic wound care control device, and ฿50,000 grant from GSB for Non-invasive sugar level measurement cup.",
+    month: "มิ.ย. 2567",
+    title: "TED Fund 2024 — Funded",
+    org: "Thailand Science Research and Innovation",
+    desc: "Received ฿100,000 grant for Chronic wound care control device.",
     type: "award",
     image: "./assets/images/award_tedfund2024.jpg",
-    badge: "💰 ฿150K Total Grants"
+    badge: "💰 ฿100,000 Grant",
+    badgeType: "fund"
+  },
+  {
+    year: "June 2024",
+    month: "มิ.ย. 2567",
+    title: "Smart Start Idea by GSB Startup — Funded",
+    org: "Government Savings Bank",
+    desc: "Received ฿50,000 grant for Non-invasive sugar level measurement cup.",
+    type: "award",
+    image: "./assets/images/award_smartstart2024.jpg",
+    badge: "💰 ฿50,000 Grant",
+    badgeType: "fund"
+  },
+  {
+    year: "June 2024",
+    month: "มิ.ย. 2567",
+    title: "Startup Thailand League 2024",
+    org: "Startup Thailand",
+    desc: "Chronic wound care control device.",
+    type: "award",
+    image: "./assets/images/award_stl2024.jpg",
+    badge: "✅ Participated",
+    badgeType: "pass"
   },
   {
     year: "February 2024",
-    title: "I-New Gen Award 2024 & JIP A Award",
+    month: "ก.พ. 2567",
+    title: "I-New Gen Award 2024 — Gold Medal",
     org: "National Research Council of Thailand (NRCT)",
-    desc: "Gold Medal & Best Innovation for ICT for Fingertip blood pressure monitor.",
+    desc: "Gold Medal for Fingertip blood pressure monitor at Thailand New Gen Inventors Award 2024.",
     type: "award",
     image: "./assets/images/award_inewgen2024.jpg",
-    badge: "🥇 Gold Medal"
+    badge: "🥇 Gold Medal",
+    badgeType: "gold"
+  },
+  {
+    year: "February 2024",
+    month: "ก.พ. 2567",
+    title: "JIP A Award — Best Innovation for ICT",
+    org: "Japan Intellectual Property Association",
+    desc: "Special international award for Fingertip blood pressure monitor — Best Innovation for ICT.",
+    type: "award",
+    image: "./assets/images/award_jipa2024.jpg",
+    badge: "🏆 Special International Award",
+    badgeType: "gold"
   },
 ];
 
