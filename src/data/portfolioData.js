@@ -128,6 +128,24 @@ export const projects = [
 
 export const experience = [
   {
+    year: "June 2026",
+    title: "SITE2026 — Global Innovation Impact",
+    org: "SITE2026 International Showcase",
+    desc: "Presented the blood glucose reduction via photobiomodulation device at an international innovation showcase.",
+    type: "award",
+    image: "./assets/images/award_site2026.jpg",
+    badge: "🌐 International Showcase"
+  },
+  {
+    year: "January 2026",
+    title: "Life Saver Hub — Outstanding Innovation Showcase",
+    org: "Medical Engineering & Health Technology Exhibition",
+    desc: "Presented two innovations under zone 'Life Saver Hub: Every Second Counts' — non-invasive blood glucose monitor and non-invasive sugar level measurement cup.",
+    type: "award",
+    image: "./assets/images/award_lifesaverhub2026.jpg",
+    badge: "🏥 Innovation Showcase"
+  },
+  {
     year: "April 2026",
     title: "STL Boost Camp 2026 — 2nd Runner-Up",
     org: "Startup Thailand League",
@@ -193,13 +211,17 @@ export const experience = [
 ];
 
 export const stats = [
-  { label: "National Awards", value: 6, suffix: "+" },
+  { label: "National Awards", value: 8, suffix: "+" },
   { label: "Competition Wins", value: 3, suffix: "" },
   { label: "Hospital Deployments", value: 2, suffix: "" },
   { label: "Key Projects", value: 6, suffix: "" },
 ];
 
 export const gallery = [
+  { img: "./assets/images/award_site2026.jpg", caption: "SITE2026 — Global Innovation Impact" },
+  { img: "./assets/images/award_lifesaverhub2026.jpg", caption: "Life Saver Hub — Innovation Showcase Jan 2026" },
+  { img: "./assets/images/award_stlboost2026.jpg", caption: "STL Boost Camp 2026 — 2nd Runner-Up" },
+  { img: "./assets/images/award_stl2026.jpg", caption: "Startup Thailand League 2026 — Demo Days" },
   { img: "./assets/images/award_inewgen2024.jpg", caption: "I-New Gen Award 2024 — Gold Medal" },
   { img: "./assets/images/award_jipa2024.jpg", caption: "JIP A Award — Best Innovation for ICT" },
   { img: "./assets/images/award_tedfund2024.jpg", caption: "TED Fund 2024 — ฿100,000 Grant" },
@@ -211,6 +233,4 @@ export const gallery = [
   { img: "./assets/images/award_scholarship2025.jpg", caption: "Medical Device Association Scholarship 2025" },
   { img: "./assets/images/award_calib_pradhipat.jpg", caption: "Calibration Service — Pradhipat Hospital" },
   { img: "./assets/images/award_calib_samkoke.jpg", caption: "Calibration Service — Samkoke Hospital" },
-  { img: "./assets/images/award_stlboost2026.jpg", caption: "STL Boost Camp 2026 — 2nd Runner-Up" },
-  { img: "./assets/images/award_stl2026.jpg", caption: "Startup Thailand League 2026 — Demo Days" }
 ];
